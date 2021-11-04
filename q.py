@@ -1,6 +1,6 @@
 # coding:utf-8
 import wx
-import helper,shot
+import helper,shot,genshin.resincleener,genshin.testgui
 import time
 from threading import Thread
 import stop
@@ -43,6 +43,9 @@ def workthread():
             elif readorder[0] == 'cam':
                 content_text.AppendText("-------触发彩蛋--镜子！！：\n")
                 shot.cam(content_text)
+            elif readorder[0] == 'debug':
+                content_text.AppendText("-------debug：\n")
+                genshin.testgui.debugui(content_text)
             else:
                 content_text.AppendText("-------不合法的命令 "+order+' \n')
         elif(len(readorder)==2):
@@ -51,6 +54,12 @@ def workthread():
                 frame.Show(False)
                 shot.getshot(content_text,readorder[1])
                 frame.Show(True)
+            elif readorder[0] == 'genshin':
+                if readorder[1] == 'resin':
+                    content_text.AppendText("-------正在风本清体力：\n")
+                    genshin.resincleener.resin(content_text)
+                else:
+                    content_text.AppendText("-------不合法的命令 "+order+' \n')
             else:
                 content_text.AppendText("-------不合法的命令 "+order+' \n')
         else:
@@ -90,7 +99,7 @@ def quitapp(event):
 thread2 = Thread(target= start)
 joinable = False
 app = wx.App()
-frame = wx.Frame(None, title="穹批工具箱", pos=(600, 200), size=(500, 400))
+frame = wx.Frame(None, title="穹批工具箱", pos=(800, 200), size=(500, 400))
 
 panel = wx.Panel(frame)
 
