@@ -70,7 +70,7 @@ def workthread():
     
 
 
-def openfile(event):     # 定义打开文件事件
+def startpro(event):     # 启动任务事件
     global joinable,thread2
     if thread2.is_alive():
         content_text.AppendText("有任务正在进行中，请勿操作！\n")
@@ -105,7 +105,7 @@ panel = wx.Panel(frame)
 
 path_text = wx.TextCtrl(panel)
 open_button = wx.Button(panel, label="运行")
-open_button.Bind(wx.EVT_BUTTON, openfile)    # 绑定打开文件事件到open_button按钮上
+open_button.Bind(wx.EVT_BUTTON, startpro)    # 绑定事件
 
 save_button = wx.Button(panel, label="退出")
 save_button.Bind(wx.EVT_BUTTON, quitapp)
