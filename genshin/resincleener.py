@@ -122,6 +122,8 @@ def resin(content_text):
             while(indexN < 800 and pixels[indexN]):
                 indexN = indexN+1
             lightR = (lightR+indexN)/2
+            if (lightR == 800 and lightL < 400):
+                lightR = 0
             road = lightL+lightR
             # content_text.AppendText("正在寻路,位置"+str(lightL)+' '+str(lightR)+"\n")
             if(road > 800):
@@ -144,4 +146,5 @@ def resin(content_text):
             time.sleep(1)
         time.sleep(2)
         pyautogui.click(x=550, y=590, duration=.3)
+        content_text.AppendText("done!\n")
 
