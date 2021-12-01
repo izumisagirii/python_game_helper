@@ -71,7 +71,7 @@ def resin(content_text):
         pyautogui.press('1')
         time.sleep(6.5)
         pyautogui.press('q')
-        time.sleep(4)
+        time.sleep(3)
         pyautogui.press('e')
         time.sleep(2)
         pyautogui.keyDown('w')
